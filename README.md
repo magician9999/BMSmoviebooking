@@ -1,40 +1,58 @@
-# Booking Movie Ticket APIs Spring Boot Project
+# 🎭 Live Show Booking System - Spring Boot Project
 
-This project is a Spring Boot implementation of the backend APIs for a ticket booking system similar to the popular platform "BookMyShow". It provides a set of RESTful APIs that enable client applications to interact with the ticket booking system and perform various operations.
+This is a backend application built with **Java Spring Boot** that manages **live show scheduling and ticket booking** for organizers and users. It handles show creation, slot-based scheduling, ticket booking with constraints, cancellation, waitlisting, and more.
 
-Folder structure : BMSmoviebooking/src/main/java/com/jts/movie/ --> contain desired format for controllers , entity , enums , constants , exceptions , etc .
+---
 
-## Features
-* User Registration -> Users can create an account, log in, and manage their profile information.
-* Movie Management -> Admin users can add, edit, and remove movie from the system.
-* Theater Management -> Admin users can add, allocate seats, edit, and remove Theaters from the system.
-* Ticket Booking -> Users can browse through the available movie, select the desired event, and book tickets for it.
-* Seat Selection -> Users can choose their preferred seats from the available options for a selected event.
-* Booking History -> Users can view their booking history and check the details of their past bookings.
+## 🚀 Features
 
-## Technologies Used
-* Java 17+
-* Spring Boot 3.3.0 
-* Spring Data JPA
-* MySQL (as the database)
-* Maven (for dependency management)
+### 🎫 Booking Functionality (User-Side)
+- Search live shows by genre (Comedy, Theatre, Tech, Singing, etc.)
+- View show timings ranked by start time (pluggable ranking strategy)
+- Book a ticket for any available show slot
+- Book one ticket for **multiple persons** (only if enough seats are available)
+- Prevents double booking in overlapping slots for the same user
+- Cancel a booking → slot becomes available
+- View all bookings made for the day
+- **Waitlist system**:
+  - If slot is full, user is waitlisted
+  - If an active booking is cancelled, the first user in waitlist gets the spot automatically
 
-## Getting Started
-To set up the project on your local machine, follow these steps:
+### 🎟️ Show Management (Organizer-Side)
+- Register new **live shows** with unique names and genres
+- Add shows in specific 1-hour time slots (e.g., 9–10AM, 10–11AM, etc.)
+- Prevents overlapping time slots for the same show
+- Add theaters and define their seating capacity per slot
+- View bookings made by users for the day
 
-1. Clone the repository: `git clone https://github.com/JavaaTechSolutions/movie-ticket-booking-system.git
-2. Navigate to the project directory
-3. Configure the database settings in `application.properties` file.
-4. Build the project using Maven: `mvn clean install`
-5. Run the application: `mvn spring-boot:run`
-6. The application will be accessible at `http://localhost:8080`.
+---
 
-## Database Setup
-This project uses MySQL as the database. Follow these steps to set up the database:
-1. Install MySQL on your local machine.
-2. Create a new database named movie_ticket_booking.
-3. Update the database configuration in `application.properties` file.
+## 🧩 Project Modules
 
-## API Documentation
-The API documentation for this project can be found at `http://localhost:8080/swagger-ui.html`. It provides detailed information about each API, including request/response formats and parameters.
+| Module       | Description                                       |
+|--------------|---------------------------------------------------|
+| `MovieController` | Admin/organizer functionality to add live shows (name, genre) |
+| `ShowController`  | Add show timings and schedule slots            |
+| `TheatreController` | Manage seating capacity and theaters         |
+| `UserController`   | User registration (optional)                  |
+| `TicketController` | Booking & cancellation of tickets             |
 
+---
+
+## ⚙️ Technologies Used
+
+- Java 17
+- Spring Boot
+- Spring MVC
+- Maven
+- (Optional) Spring Security / JWT (if login is implemented)
+- H2 / MySQL / PostgreSQL (pluggable DB - current setup uses in-memory DB for dev)
+
+---
+
+## 🧪 How to Run
+
+```bash
+git clone https://github.com/magician9999/BMSClone.git
+cd BMSClone
+./mvnw spring-boot:run
