@@ -2,6 +2,8 @@
 
 This project is a Spring Boot implementation of the backend APIs for a ticket booking system similar to the popular platform "BookMyShow". It provides a set of RESTful APIs that enable client applications to interact with the ticket booking system and perform various operations.
 
+Folder structure : BMSmoviebooking/src/main/java/com/jts/movie/ --> contain desired format for controllers , entity , enums , constants , exceptions , etc .
+
 ## Features
 * User Registration -> Users can create an account, log in, and manage their profile information.
 * Movie Management -> Admin users can add, edit, and remove movie from the system.
